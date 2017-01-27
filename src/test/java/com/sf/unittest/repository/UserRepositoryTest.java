@@ -4,12 +4,8 @@ import com.sf.unittest.model.User;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by cyprian on 1/26/17.
@@ -30,7 +26,6 @@ public class UserRepositoryTest {
 
     private UserRepository userRepository;
     private User user;
-    private ArrayList<User> userList = new ArrayList<>();
 
     @Before
     public void setUp(){
@@ -41,13 +36,7 @@ public class UserRepositoryTest {
         user.setFirstName(FIRST_NAME);
         user.setLastName(LAST_NAME);
         user.setId(ID);
-
-        userList.add(user);
-//        Mockito.when(userRepository.save(user)).thenReturn(userList);
-//        Mockito.when(userRepository.findById(ID)).thenReturn(user);
-//        Mockito.when(userRepository.findAllUsers()).thenReturn(userList);
-//        Mockito.when(userRepository.findAllUsers()).thenReturn(userList);
-
+        userRepository.save(user);
     }
 
     @Test
@@ -59,11 +48,8 @@ public class UserRepositoryTest {
         newUser.setAge(NEW_AGE);
         List<User> userList = userRepository.save(newUser);
         Assert.assertNotNull(userList);
-        Assert.assertEquals(userList.size(),SIZE);
+        Assert.assertEquals(userList.size(), SIZE + 1);
 
-        User userById = userRepository.findById(NEW_ID);
-        Assert.assertEquals(userById.getAge(),NEW_AGE);
-        Assert.assertEquals(userById.getFirstName(),NEW_FIRST_NAME);
     }
 
     @Test
@@ -75,12 +61,16 @@ public class UserRepositoryTest {
 
     @Test
     public void findAllUsers() throws Exception {
+        List<User> allUsers = userRepository.findAllUsers();
+        Assert.assertEquals(allUsers.size(), SIZE);
+    }
+
+    @Test
+    public void remove() throws Exception {
+        userRepository.remove(user);
+        List<User> allUsers = userRepository.findAllUsers();
+        Assert.assertEquals(allUsers.size(), 0);
 
     }
-//
-//    @Test
-//    public void remove() throws Exception {
-//
-//    }
 
 }
