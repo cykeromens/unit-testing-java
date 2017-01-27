@@ -1,8 +1,8 @@
 package com.sf.unittest.service.impl;
 
+import com.sf.unittest.model.User;
 import com.sf.unittest.repository.UserRepository;
 import com.sf.unittest.service.UserService;
-import com.sf.unittest.model.User;
 
 import java.util.List;
 
@@ -22,8 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> addUser(User user) {
-        userRepository.save(user);
-        return null;
+        return userRepository.save(user);
     }
 
     @Override

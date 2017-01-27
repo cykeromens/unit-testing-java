@@ -29,7 +29,6 @@ public class UserRepositoryTest {
 
     @Before
     public void setUp(){
-//        userRepository = Mockito.mock(UserRepository.class);
         userRepository = new UserRepository();
         user = new User();
         user.setAge(AGE);
