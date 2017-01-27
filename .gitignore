@@ -19,9 +19,3 @@ Thumbs.db
 
 # Various text editor swap files, etc.
 .*.swp
-!/src/main/java/com/sf/unittest/UnitTestApp.java
-!/src/main/java/com/sf/unittest/Hello.java
-!/src/main/java/com/sf/unittest/HelloApp.java
-!/src/test/java/com/sf/unittest/HelloAppTest.java
-!/src/test/java/com/sf/unittest/HelloWithTestsIT.java
-!/src/test/java/com/sf/unittest/HelloTest.java
